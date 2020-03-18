@@ -1,2 +1,2 @@
 # pyDcm2hbase
- Get DICOM informations e insert in hbase database
+ Get DICOM informations and insert in hbase database
