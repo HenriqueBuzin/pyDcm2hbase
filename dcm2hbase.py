@@ -8,10 +8,11 @@ import happybase
 class Hbase:
     def __init__(self):
         self.conn = happybase.Connection('localhost')
-        #print(self.conn.tables())
-        
-conn = Hbase()
+        row = self.conn.table('prontuary')
 
+    def insert(self):
+    	print(self.conn.tables())
+        
 print("Executando... Por favor aguarde.")
 
 exams = []
@@ -54,11 +55,15 @@ for r, d, f in os.walk(path):
 
 				rowKey = patientID + ":" + date
 
-				pixelData = ds.data_element("PixelData")
-				pixelData = str(pixelData.value)
-				pixelData = hashlib.md5(pixelData.encode('utf-8')).hexdigest()
+				#pixelData = ds.data_element("PixelData")
+				#pixelData = str(pixelData.value)
+				#pixelData = hashlib.md5(pixelData.encode('utf-8')).hexdigest()
 
-				exam = {'rowKey': rowKey, 'sopInstanceUID': sopInstanceUID, 'bodyPartExamined': bodyPartExamined, 'binary': pixelData}
-				exams.append(exam)
+				#exam = {'rowKey': rowKey, 'sopInstanceUID': sopInstanceUID, 'bodyPartExamined': bodyPartExamined, 'binary': pixelData}
+				#exams.append(exam)
 
 #print(exams[0]['binary'])
+
+
+conn = Hbase()
+conn.insert()
