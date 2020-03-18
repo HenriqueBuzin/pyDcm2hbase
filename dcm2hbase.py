@@ -1,8 +1,16 @@
 import os
-import pydicom
 import time
-import datetime
+import pydicom
 import hashlib
+import datetime
+import happybase
+
+class Hbase:
+    def __init__(self):
+        self.conn = happybase.Connection('localhost')
+        #print(self.conn.tables())
+        
+conn = Hbase()
 
 print("Executando... Por favor aguarde.")
 
@@ -53,4 +61,4 @@ for r, d, f in os.walk(path):
 				exam = {'rowKey': rowKey, 'sopInstanceUID': sopInstanceUID, 'bodyPartExamined': bodyPartExamined, 'binary': pixelData}
 				exams.append(exam)
 
-print(exams[0]['binary'])
+#print(exams[0]['binary'])
