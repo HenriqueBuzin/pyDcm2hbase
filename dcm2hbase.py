@@ -9,14 +9,17 @@ class Hbase:
     def __init__(self):
         self.conn = happybase.Connection('localhost')
         self.table = self.conn.table('prontuary')
+        self.batch = self.table.batch(batch_size = 1000)
 
     def insert(self, exams):
-    	self.table.put('browkey', {'line': 'A'})
+    	#self.batch.put('123', {'0103:head': '9696'})
     	
     	for e in exams:
     		for key, value in e.items():
     			line = str(e['sopInstanceUID']+":"+e['bodyPartExamined'])
     			rowkey = str(e['rowKey'])
+    			binary = str(e['binary'])
+    			self.batch.put(rowkey, {line: binary})
 
 print("Executando... Por favor aguarde.")
 
@@ -60,12 +63,11 @@ for r, d, f in os.walk(path):
 
 				rowKey = patientID + ":" + date
 
-				#pixelData = ds.data_element("PixelData")
-				#pixelData = str(pixelData.value)
-				#pixelData = hashlib.md5(pixelData.encode('utf-8')).hexdigest()
+				pixelData = ds.data_element("PixelData")
+				pixelData = str(pixelData.value)
+				pixelData = hashlib.md5(pixelData.encode('utf-8')).hexdigest()
 
-				#exam = {'rowKey': rowKey, 'sopInstanceUID': sopInstanceUID, 'bodyPartExamined': bodyPartExamined, 'binary': pixelData}
-				exam = {'rowKey': rowKey, 'sopInstanceUID': sopInstanceUID, 'bodyPartExamined': bodyPartExamined}
+				exam = {'rowKey': rowKey, 'sopInstanceUID': sopInstanceUID, 'bodyPartExamined': bodyPartExamined, 'binary': pixelData}
 				
 				exams.append(exam)
 
