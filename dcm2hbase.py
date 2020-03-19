@@ -18,8 +18,6 @@ class Hbase:
     			line = str(e['sopInstanceUID']+":"+e['bodyPartExamined'])
     			rowkey = str(e['rowKey'])
 
-    			
-        
 print("Executando... Por favor aguarde.")
 
 exams = []
