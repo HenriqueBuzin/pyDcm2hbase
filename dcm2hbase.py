@@ -9,17 +9,15 @@ class Hbase:
     def __init__(self):
         self.conn = happybase.Connection('localhost')
         self.table = self.conn.table('prontuary')
-        self.batch = self.table.batch(batch_size = 1000)
 
     def insert(self, exams):
-    	#self.batch.put('123', {'0103:head': '9696'})
-    	
     	for e in exams:
     		for key, value in e.items():
-    			line = str(e['sopInstanceUID']+":"+e['bodyPartExamined'])
+    			line = str(e['studyInstanceUID']+":"+e['bodyPartExamined'])
     			rowkey = str(e['rowKey'])
     			binary = str(e['binary'])
-    			self.batch.put(rowkey, {line: binary})
+    			self.table.put(rowkey, {line: binary})
+    			
 
 print("Executando... Por favor aguarde.")
 
@@ -42,23 +40,34 @@ for r, d, f in os.walk(path):
 				patientID = ds.data_element("PatientID")
 				patientID = str(patientID.value)
 				
-				sopInstanceUID = ds.data_element("SOPInstanceUID")
-				sopInstanceUID = str(sopInstanceUID.value)
+				#print(patientID)
+
+				studyInstanceUID = ds.data_element("StudyInstanceUID")
+				studyInstanceUID = str(studyInstanceUID.value)
+
+				#print(studyInstanceUID)
 
 				bodyPartExamined = ds.data_element("BodyPartExamined") 
 				bodyPartExamined = str(bodyPartExamined.value)
 
-				seriesDate= ds.data_element("StudyDate")
-				seriesDate = str(seriesDate.value)
-				year = seriesDate[:4]				
-				month = seriesDate[4:6]
-				day = seriesDate[6:]
+				#print(bodyPartExamined)
 
-				seriesTime = ds.data_element("StudyTime")
-				seriesTime = str(seriesTime.value)
-				seriesTime = time.strftime("%H:%M:%S", time.gmtime(float(seriesTime)))
+				studyDate= ds.data_element("StudyDate")
+				studyDate = str(studyDate.value)
+				year = studyDate[:4]				
+				month = studyDate[4:6]
+				day = studyDate[6:]
+
+				#print(studyDate)
+
+				studyTime = ds.data_element("StudyTime")
+				studyTime = str(studyTime.value)
 				
-				date = day + "/" + month + "/" + year + " " + seriesTime
+				#print(studyTime)
+
+				studyTime = time.strftime("%H:%M:%S", time.gmtime(float(studyTime)))
+
+				date = day + "/" + month + "/" + year + " " + studyTime
 				date = str(time.mktime(datetime.datetime.strptime(date, "%d/%m/%Y %H:%M:%S").timetuple()))			
 
 				rowKey = patientID + ":" + date
@@ -67,7 +76,7 @@ for r, d, f in os.walk(path):
 				pixelData = str(pixelData.value)
 				pixelData = hashlib.md5(pixelData.encode('utf-8')).hexdigest()
 
-				exam = {'rowKey': rowKey, 'sopInstanceUID': sopInstanceUID, 'bodyPartExamined': bodyPartExamined, 'binary': pixelData}
+				exam = {'rowKey': rowKey, 'studyInstanceUID': studyInstanceUID, 'bodyPartExamined': bodyPartExamined, 'binary': pixelData}
 				
 				exams.append(exam)
 

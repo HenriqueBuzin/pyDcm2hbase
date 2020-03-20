@@ -3,7 +3,8 @@
 
 ## Run SGBD
 - Start SGBD: ${HBASE_HOME}/bin/start-hbase.sh
-- Start Thrift: ${HBASE_HOME}/bin/base-daemon.sh start thrift -p 9090 --inforport 9095
+- Start Thrift: ${HBASE_HOME}/bin/hbase-daemon.sh start thrift -p 9090
+
 - Acess shell: ${HBASE_HOME}/bin/hbase shell
 - Execute: create 'prontuary', 'studyInstaceUID'
 - Execute: alter 'prontuary', {NAME => 'studyInstaceUID', COMPRESSION => 'GZ' }
