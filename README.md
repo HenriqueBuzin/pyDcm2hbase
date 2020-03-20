@@ -6,8 +6,8 @@
 - Start Thrift: ${HBASE_HOME}/bin/hbase-daemon.sh start thrift -p 9090
 
 - Acess shell: ${HBASE_HOME}/bin/hbase shell
-- Execute: create 'prontuary', 'studyInstaceUID'
-- Execute: alter 'prontuary', {NAME => 'studyInstaceUID', COMPRESSION => 'GZ' }
+- Execute: create 'prontuary', 'StudyInstanceUID'
+- Execute: alter 'prontuary', {NAME => 'StudyInstanceUID', COMPRESSION => 'GZ' }
 
 ## Run Python3
 - Install: pip3 install pydicom
