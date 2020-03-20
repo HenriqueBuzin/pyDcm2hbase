@@ -14,7 +14,7 @@ class Hbase:
     	for e in exams:
     		for key, value in e.items():
     			rowkey = str(e['rowKey'])
-    			line = 'StudyInstanceUID' + ":" + str(e['studyInstanceUID'])
+    			line = 'StudyInstanceUID' + ":" + str(e['studyInstanceUID']) + ":" + str(e['bodyPartExamined'])
     			binary = str(e['binary'])
     			self.table.put(rowkey, {line: binary})
     			
