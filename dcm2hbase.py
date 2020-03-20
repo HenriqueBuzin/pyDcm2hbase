@@ -9,6 +9,7 @@ class Hbase:
     def __init__(self):
         self.conn = happybase.Connection('localhost')
         self.table = self.conn.table('prontuary')
+        self.batch = self.table.batch()
 
     def insert(self, exams):
     	for e in exams:
@@ -16,7 +17,7 @@ class Hbase:
     			line = str(e['studyInstanceUID']+":"+e['bodyPartExamined'])
     			rowkey = str(e['rowKey'])
     			binary = str(e['binary'])
-    			self.table.put(rowkey, {line: binary})
+    			self.batch.put(rowkey, {line: binary})
     			
 
 print("Executando... Por favor aguarde.")
