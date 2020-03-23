@@ -22,7 +22,7 @@
 
 ![modelo de dados](https://github.com/HenriqueBuzin/pyDcm2hbase/blob/master/Explanation/example.png?raw=true)
 
-#### BD Code
+## BD Code
 - create 'prontuary', 'StudyInstanceUID'
 - alter 'prontuary', {NAME => 'StudyInstanceUID', COMPRESSION => 'GZ' }
 - desc 'prontuary'
