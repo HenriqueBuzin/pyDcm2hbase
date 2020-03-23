@@ -1,5 +1,5 @@
 # pyDcm2hbase
- Get DICOM informations and insert in hbase database
+- Get DICOM informations and insert in hbase database
 
 ## Run SGBD
 - Start SGBD: ${HBASE_HOME}/bin/start-hbase.sh
