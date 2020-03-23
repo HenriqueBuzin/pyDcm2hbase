@@ -22,7 +22,7 @@
 - scan 'prontuary'
 
 ### BD explanation
-- In the explanation folder
+- In the "Explanation" folder
 
 ## Run Python3
 - Install: pip3 install pydicomw
