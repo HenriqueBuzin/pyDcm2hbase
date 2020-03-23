@@ -3,7 +3,7 @@
 
 ## Group
 - Henrique Antonio Buzin Vargas
-- Cristiano Sarmento Bittencourt
+- Cristiano Bittencourt Sarmento
 
 ## Run SGBD
 - Start SGBD: ${HBASE_HOME}/bin/start-hbase.sh
