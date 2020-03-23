@@ -1,5 +1,6 @@
 # Explicação sobre a escolha do modelo de dados do banco
 
+![modelo de dados](https://github.com/HenriqueBuzin/pyDcm2hbase/blob/master/Explanation/example.png?raw=true)
 
 
 
