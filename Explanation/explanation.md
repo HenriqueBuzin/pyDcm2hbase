@@ -4,19 +4,19 @@
 - No modelo de daods utilizados escolhemos a rowkey como sendo o patientID:(Study Date e Study Time convertidos para timestamp)
 
 ### Reason
-Pois nesse modelo poderíamos usar o id "único" do paciente para pesquisa, além de procurar pelo tempo em que foi feito os exames, e ainda o tempo em que foi feito os exames daquele paciente em específico.
+- Pois nesse modelo poderíamos usar o id "único" do paciente para pesquisa, além de procurar pelo tempo em que foi feito os exames, e ainda o tempo em que foi feito os exames daquele paciente em específico.
 
 ## Column Family
 - A
 
 ### Reason
-A
+- A
 
 ## Sub Family Columns
 - A
 
 ### Reason
-A
+- A
 
 ## Sample image
 
